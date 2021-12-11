@@ -15,6 +15,7 @@ class Resume extends Component {
     if (!this.props.data) return null;
 
     const skillmessage = this.props.data.skillmessage;
+
     const education = this.props.data.education.map(function (education) {
       return (
         <div key={education.school}>
@@ -27,6 +28,18 @@ class Resume extends Component {
         </div>
       );
     });
+const certifications = this.props.data.certifications.map(function (certifications) {
+  return (
+    <div key={certifications.school}>
+          <h3>{certifications.school}</h3>
+          <p className="info">
+            {certifications.degree} <span>&bull;</span>
+            <em className="date">{certifications.graduated}</em>
+          </p>
+          <p>{certifications.description}</p>
+        </div>
+  );
+});
 
     const work = this.props.data.work.map(function (work) {
       return (
@@ -67,6 +80,22 @@ class Resume extends Component {
             <div className="nine columns main-col">
               <div className="row item">
                 <div className="twelve columns">{education}</div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+
+        <Slide left duration={1300}>
+          <div className="row education">
+            <div className="three columns header-col">
+              <h1>
+                <span>Certifications</span>
+              </h1>
+            </div>
+
+            <div className="nine columns main-col">
+              <div className="row item">
+                <div className="twelve columns">{certifications}</div>
               </div>
             </div>
           </div>

@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
 
       $.ajax({
         type: "POST",
-        url: "inc/sendEmail.php",
+        url: "http://localhost:3000",//"inc/sendEmail.php",
         data: data,
         success: function(msg) {
           // Message was sent

@@ -1,5 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 import { Fade, Slide } from "react-reveal";
+
+
+ 
 
 class Contact extends Component {
   render() {
@@ -13,13 +16,27 @@ class Contact extends Component {
     const phone = this.props.data.phone;
     const message = this.props.data.contactmessage;
 
+    const HandleSubmit = (e) => {
+      e.preventDefault();
+      var contactInput = useRef(null);
+      var emailInput = useRef(null);
+      var subjectInput = useRef(null);
+      var messageInput = useRef(null);
+     
+      const fullEmail = `${contactInput} + ${emailInput} + ${subjectInput} + ${messageInput}`
+
+      console.log(fullEmail);
+ 
+      //... submit to API here
+    };
+
     return (
       <section id="contact">
         <Fade bottom duration={1000}>
           <div className="row section-head">
             <div className="two columns header-col">
               <h1>
-                <span>Get In Touch.</span>
+                <span>Shoot Me a Message.</span>
               </h1>
             </div>
 
@@ -32,7 +49,7 @@ class Contact extends Component {
         <div className="row">
           <Slide left duration={1000}>
             <div className="eight columns">
-              <form action="" method="post" id="contactForm" name="contactForm">
+              <form onSubmit={HandleSubmit} method='POST' id="contactForm" name="contactForm">
                 <fieldset>
                   <div>
                     <label htmlFor="contactName">
@@ -40,6 +57,7 @@ class Contact extends Component {
                     </label>
                     <input
                       type="text"
+                      ref={this.contactInput}
                       defaultValue=""
                       size="35"
                       id="contactName"
@@ -54,6 +72,7 @@ class Contact extends Component {
                     </label>
                     <input
                       type="text"
+                      ref={this.emailInput}
                       defaultValue=""
                       size="35"
                       id="contactEmail"
@@ -66,6 +85,7 @@ class Contact extends Component {
                     <label htmlFor="contactSubject">Subject</label>
                     <input
                       type="text"
+                      ref={this.subjectInput}
                       defaultValue=""
                       size="35"
                       id="contactSubject"
@@ -81,13 +101,15 @@ class Contact extends Component {
                     <textarea
                       cols="50"
                       rows="15"
+                      ref={this.messageInput}
                       id="contactMessage"
                       name="contactMessage"
+                      onChange={this.handleChange}
                     ></textarea>
                   </div>
 
                   <div>
-                    <button className="submit">Submit</button>
+                    <button onClick={HandleSubmit} className="submit">Submit</button>
                     <span id="image-loader">
                       <img alt="" src="images/loader.gif" />
                     </span>
@@ -122,10 +144,10 @@ class Contact extends Component {
                 <ul id="twitter">
                   <li>
                     <span>
-                      This is Photoshop's version of Lorem Ipsum. Proin gravida
-                      nibh vel velit auctor aliquet. Aenean sollicitudin, lorem
-                      quis bibendum auctor, nisi elit consequat ipsum
-                      <a href="./">http://t.co/CGIrdxIlI3</a>
+                    Set and enforce an aspirational personal hourly rate. 
+                    If fixing a problem will save less than your hourly rate, ignore it. 
+                    If outsourcing a task will cost less than your hourly rate, outsource it.
+                      <a href="./">https://rb.gy/pmhugt</a>
                     </span>
                     <b>
                       <a href="./">2 Days Ago</a>
@@ -133,11 +155,9 @@ class Contact extends Component {
                   </li>
                   <li>
                     <span>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi
-                      <a href="./">http://t.co/CGIrdxIlI3</a>
+                    Entrepreneurs who build a sustainable biz over 5 years vs a 6 month sprint 
+                    at a startup are more likely to be successful over the long haul
+                      <a href="./">https://rb.gy/awdmyo</a>
                     </span>
                     <b>
                       <a href="./">3 Days Ago</a>
